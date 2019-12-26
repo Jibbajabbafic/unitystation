@@ -153,9 +153,10 @@ public class CorgiAI : MobAI
 	//Updates only on the server
 	protected override void UpdateMe()
 	{
+		base.UpdateMe();
+
 		if (health.IsDead || health.IsCrit || health.IsCardiacArrest) return;
 
-		base.UpdateMe();
 		MonitorExtras();
 	}
 
