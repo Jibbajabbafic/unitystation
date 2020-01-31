@@ -263,7 +263,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   registerTile: {fileID: 0}
-  isNotPushable: 0
+  isInitiallyNotPushable: 0
 --- !u!114 &114713267190622314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,7 +473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobName: Ian
-  knockedDownRotation: -180
+  knockedDownRotation: 0
   allowedToGiveCommands: 0600000016000000
 --- !u!1 &7921138586108671727
 GameObject:
