@@ -121,7 +121,6 @@ jobs:
     name: Create Docker image
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.0.0
       - uses: actions/download-artifact@v1
         with:
           name: StandaloneLinux64
@@ -129,7 +128,7 @@ jobs:
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@2.12
         with:
-          name: unitystation/unitystation
+          name: jibby/test-repo
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           context: Docker
