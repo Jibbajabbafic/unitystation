@@ -121,6 +121,7 @@ jobs:
     name: Create Docker image
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2.0.0
       - uses: actions/download-artifact@v1
         with:
           name: StandaloneLinux64
