@@ -4,7 +4,7 @@ using UnityEngine;
 using Mirror;
 
 /// <summary>
-/// The main controller for each component of its Sprites 
+/// The main controller for each component of its Sprites
 /// </summary>
 public class SpriteHandlerController : NetworkBehaviour
 {
@@ -27,7 +27,8 @@ public class SpriteHandlerController : NetworkBehaviour
 
 	private bool Initialised;
 
-	private void Initialise() { 
+	private void Initialise()
+	{
 		if (spriteHandler == null)
 		{
 			spriteHandler = GetComponentInChildren<SpriteHandler>();
@@ -39,9 +40,20 @@ public class SpriteHandlerController : NetworkBehaviour
 		itemAttributes = GetComponent<ItemAttributesV2>();
 		pickupable = GetComponent<Pickupable>();
 		Initialised = true;
-		if (itemAttributes.ItemSprites.InventoryIcon.Data.HasSprite())
+		var hasSprites = itemAttributes?.ItemSprites?.InventoryIcon?.Data?.HasSprite();
+		if (!hasSprites.HasValue)
 		{
-			SetIcon(itemAttributes.ItemSprites);
+			Logger.LogErrorFormat("{0} isn't setup correctly! " +
+								  "Should SpriteHandlerController be removed or is it just missing sprite data?",
+				Category.SpriteHandler, gameObject.name);
+
+		}
+		else
+		{
+			if ((bool)hasSprites)
+			{
+				SetIcon(itemAttributes.ItemSprites);
+			}
 		}
 	}
 
@@ -65,8 +77,8 @@ public class SpriteHandlerController : NetworkBehaviour
 
 	}
 
-	private void SetIcon(ItemsSprites newSprites) {
-		
+	private void SetIcon(ItemsSprites newSprites)
+	{
 		if (!Initialised)
 		{
 			Initialise();
