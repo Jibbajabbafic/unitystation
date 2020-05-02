@@ -128,7 +128,7 @@ jobs:
           jq --arg v "$CDN_PATH_LIN" '.LinuxDownload = $v' $CONFIG_PATH | sponge $CONFIG_PATH
       # Build the project
       - name: Build project
-        uses: webbertakken/unity-builder@v0.9
+        uses: webbertakken/unity-builder@v0.12
         with:
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
